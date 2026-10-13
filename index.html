@@ -73,13 +73,15 @@
             justify-content: space-between;
             align-items: center;
             text-align: center;
-            padding: 20px 15px;
+            padding: 15px 15px;
+            overflow-y: auto; /* PC-তে কন্টেন্ট বেশি হলে স্ক্রোল বা সেফ রাখার জন্য */
         }
         .logo-container {
             width: 100%;
             max-width: 100%;
             padding: 0 20px;
             margin-top: 5px;
+            flex-shrink: 0;
         }
         .logo-container img {
             width: 100%;
@@ -91,7 +93,7 @@
         .powered-by {
             font-size: 1.1rem;
             color: rgba(255, 255, 255, 0.9);
-            margin-top: 10px;
+            margin-top: 8px;
             font-weight: 600;
             letter-spacing: 1px;
             text-shadow: 0 2px 4px rgba(0,0,0,0.8);
@@ -113,6 +115,9 @@
             align-items: center;
             justify-content: center;
             width: 100%;
+            margin: auto 0; /* PC এবং মোবাইলে মাঝখানে ব্যালেন্স করার জন্য */
+            padding: 10px 0;
+            flex-shrink: 0;
         }
 
         .text-line {
@@ -120,11 +125,11 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             line-height: 1.1;
-            margin: 8px 0;
+            margin: 6px 0;
             opacity: 0;
         }
         .text-many-holes {
-            font-size: clamp(2.8rem, 11vw, 4.2rem);
+            font-size: clamp(2.4rem, 10vw, 3.8rem);
             color: #fff;
             text-shadow: 0 0 10px #ff0055, 0 0 20px #ff0055, 0 0 40px #ff0055;
         }
@@ -132,7 +137,7 @@
             animation: slideLeft 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
         .text-waiting {
-            font-size: clamp(2rem, 7.5vw, 3.2rem);
+            font-size: clamp(1.8rem, 7vw, 2.8rem);
             color: #00ffff;
             text-shadow: 0 0 10px #00ffff, 0 0 20px #00ffff;
         }
@@ -140,10 +145,10 @@
             animation: slideRight 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
         }
         .text-free {
-            font-size: clamp(3.2rem, 13vw, 5rem);
+            font-size: clamp(2.8rem, 12vw, 4.5rem);
             color: #39ff14;
             text-shadow: 0 0 15px #39ff14, 0 0 30px #39ff14, 0 0 60px #39ff14;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .slide-from-bottom {
             animation: slideBottom 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards, 
@@ -154,8 +159,8 @@
         .cta-button {
             display: none;
             text-decoration: none;
-            padding: 14px 35px;
-            font-size: clamp(1.2rem, 5.5vw, 1.8rem);
+            padding: 12px 30px;
+            font-size: clamp(1.1rem, 5vw, 1.6rem);
             font-weight: 900;
             text-transform: uppercase;
             color: #000;
@@ -168,7 +173,8 @@
             outline: none;
             position: relative;
             z-index: 10;
-            margin-bottom: 10px;
+            margin-top: 5px;
+            margin-bottom: 5px;
             transition: transform 0.2s;
             width: 85%;
         }
@@ -185,6 +191,7 @@
             letter-spacing: 0.5px;
             text-shadow: 0 1px 2px rgba(0,0,0,0.8);
             margin-bottom: 5px;
+            flex-shrink: 0;
         }
 
         .blur-overlay-screen {
@@ -347,7 +354,6 @@
     </div>
 
     <script>
-        // আপনার অ্যাফিলিয়েট লিংকটি নিচের ইনভার্টেড কমার ভেতরে বসিয়ে দিন
         const affiliateLink = "https://dr-ro-buc.com/tds?tds_campaign=s4549muz&tdsId=s4549muz_r&utm_term={utm_term}&utm_source=int&s1=int&clickid={clickid}&subid={funbook}&subid2={subid2}&affid=7d1d7a25";
 
         const slides = document.querySelectorAll('.bg-slide');
@@ -382,12 +388,11 @@
                 
                 blurScreen.style.display = 'flex';
 
-                // ঠিক ৪ সেকেন্ড (4000 মিলিসেকেন্ড) পর লিংক ওপেন হবে
                 setTimeout(() => {
                     if (affiliateLink && affiliateLink.trim() !== "") {
                         window.location.href = affiliateLink;
                     } else {
-                        alert("দয়া করে কোডের ভেতরে অ্যাফিলিয়েট লিংকটি বসান!");
+                        alert("দয়া করে কোডের ভেতরে অ্যাফিলিয়েট লিংকটি বসান!");
                         blurScreen.style.display = 'none';
                     }
                 }, 4000);
